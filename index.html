@@ -53,7 +53,7 @@ h2{font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-.015em;line-height:1.05;fo
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
 .card{background:var(--ink2);border-radius:22px;padding:22px;transition:transform .25s,background .25s;transform-style:preserve-3d}
 .card:hover{background:#231a15}
-.dot{height:150px;border-radius:16px;margin-bottom:18px;display:grid;place-items:center;overflow:hidden}
+.dot{height:240px;border-radius:16px;margin-bottom:18px;display:grid;place-items:center;overflow:hidden}
 .dot svg{width:70px;transition:transform .4s}.card:hover .dot svg{transform:translateY(-8px) rotate(-6deg) scale(1.1)}
 .card h3{font-size:1.25rem;letter-spacing:-.02em}
 .card p{color:var(--mute);font-size:.9rem;margin:6px 0 16px;min-height:2.7em}
@@ -155,7 +155,7 @@ nav a{font-weight:500}.logo{font-weight:700}.tab,.size button{font-weight:500}
   </div>
 </section>
 
-<footer><span>© 2026 Pearl & Pour. Nairobi, Kenya.</span><span>All prices in Kenyan shillings (KES), VAT included.</span></footer>
+<footer><span>© 2026 Pearl & Pour. Nairobi, Kenya.</span><span></span></footer>
 
 <div id="veil"></div>
 <aside id="cart" aria-label="Your order">
@@ -167,14 +167,14 @@ nav a{font-weight:500}.logo{font-weight:700}.tab,.size button{font-weight:500}
 
 <script>
 const D=[
-{id:1,n:"Classic Milk Tea",c:"milk",d:"Assam black tea, fresh milk, brown sugar pearls.",p:[350,450],t:"#B89F7C"},
-{id:2,n:"Brown Sugar Boba",c:"milk",d:"Warm tiger-striped syrup, cold milk, extra pearls.",p:[420,520],t:"#8a6c4b"},
-{id:3,n:"Taro Cloud",c:"milk",d:"Purple-free taro paste, whipped milk, coconut jelly.",p:[400,500],t:"#E3D5BE"},
-{id:4,n:"Thai Tea",c:"milk",d:"Spiced tea with condensed milk. Sweet and bold.",p:[380,480],t:"#a5825a"},
-{id:5,n:"Mango Passion",c:"fruit",d:"Fresh mango, passion fruit, green tea, popping pearls.",p:[380,480],t:"#d8c29b"},
-{id:6,n:"Lychee Green Tea",c:"fruit",d:"Light jasmine green tea with lychee and aloe.",p:[360,460],t:"#efe6d6"},
-{id:7,n:"Kenya Coffee Boba",c:"special",d:"Cold brew from Kenyan beans, oat milk, pearls.",p:[400,500],t:"#5b4433"},
-{id:8,n:"Mandazi & Milk Tea",c:"special",d:"Classic milk tea with two warm mandazi.",p:[550,650],t:"#c9b28d"}
+{id:1,n:"Classic Milk Tea",c:"milk", img:'images/Classic-Milk-Tea-Boba.jpg',d:"Assam black tea, fresh milk, brown sugar pearls.",p:[350,450]},
+{id:2,n:"Brown Sugar Boba",c:"milk", img:'images/Brown-sugar-boba.jpg',d:"Warm tiger-striped syrup, cold milk, extra pearls.",p:[420,520]},
+{id:3,n:"Taro Cloud",c:"milk", img:'images/taro-boba.jfif',d:"Purple-free taro paste, whipped milk, coconut jelly.",p:[400,500]},
+{id:4,n:"Thai Tea",c:"milk", img:'images/thai-tea.jfif',d:"Spiced tea with condensed milk. Sweet and bold.",p:[380,480]},
+{id:5,n:"Mango Passion",c:"fruit", img:'images/mango-passionfruit-boba.jpg',d:"Fresh mango, passion fruit, green tea, popping pearls.",p:[380,480]},
+{id:6,n:"Lychee Green Tea",c:"fruit", img:'images/green-tea-boba.jpg',d:"Light jasmine green tea with lychee and aloe.",p:[360,460]},
+{id:7,n:"Kenya Coffee Boba",c:"special", img:'images/kenyan-coffee-boba.jfif',d:"Cold brew from Kenyan beans, oat milk, pearls.",p:[400,500]},
+{id:8,n:"Mandazi & Milk Tea",c:"special", img:'images/mandazi-and-tea.jfif',d:"Classic milk tea with two warm mandazi.",p:[550,650]}
 ];
 const cup='<svg viewBox="0 0 60 90"><path d="M8 20h44l-6 60q-1 6-7 6H21q-6 0-7-6z" fill="#F6F1E9" opacity=".9"/><rect x="4" y="12" width="52" height="9" rx="4.5" fill="#0D0907"/><rect x="29" y="0" width="4" height="30" rx="2" fill="#0D0907" transform="rotate(8 31 15)"/><g fill="#0D0907"><circle cx="21" cy="76" r="4"/><circle cx="31" cy="77" r="4"/><circle cx="40" cy="76" r="4"/><circle cx="26" cy="68" r="4"/><circle cx="36" cy="68" r="4"/></g></svg>';
 const fmt=n=>'KES '+n.toLocaleString('en-KE');
@@ -184,7 +184,7 @@ const $=s=>document.querySelector(s);
 /* menu */
 function render(){
  $('#grid').innerHTML=D.filter(x=>cat=='all'||x.c==cat).map(x=>`
- <article class="card" data-id="${x.id}"><div class="dot" style="background:${x.t}">${cup}</div>
+ <article class="card" data-id="${x.id}"><div class="dot" style="background:${x.t}">${x.img?`<img src="${x.img}" alt="${x.n}" loading="lazy" style="width:100%;height:100%;object-fit:contain">`:cup}</div>
  <h3>${x.n}</h3><p>${x.d}</p>
  <div class="row"><div class="size" role="group" aria-label="Size"><button aria-pressed="true" data-s="0">Regular</button><button aria-pressed="false" data-s="1">Large</button></div><span class="price">${fmt(x.p[0])}</span></div>
  <button class="add">Add to order</button></article>`).join('');
