@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu — Pearl & Pour</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="glow"></div>
+<nav>
+  <a class="logo" href="index.html">Pearl & Pour</a>
+  <ul><li><a href="index.html">Home</a></li><li><a class="on" href="menu.html" aria-current="page">Menu</a></li><li><a href="index.html#craft">How we make it</a></li><li><a href="index.html#visit">Visit</a></li></ul>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  <button class="cartbtn" id="open">Order<b id="count">0</b></button>
+</nav>
+
+<section id="menu">
+  <h1 class="rv">The menu</h1>
+  <p class="sub rv">Every drink is made fresh. Pick a size, add it to your order. Extra toppings are KES 50 each at the counter.</p>
+  <div class="tabs" id="tabs">
+    <button class="tab" data-c="all" aria-pressed="true">All</button>
+    <button class="tab" data-c="milk" aria-pressed="false">Milk tea</button>
+    <button class="tab" data-c="fruit" aria-pressed="false">Fruit tea</button>
+    <button class="tab" data-c="special" aria-pressed="false">Specials</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<footer><span>© 2026 Pearl & Pour. Nairobi, Kenya.</span><span><a href="index.html">Home</a><a href="menu.html">Menu</a></span></footer>
+
+<div id="veil"></div>
+<aside id="cart" aria-label="Your order">
+  <div class="row"><h2 style="font-size:2rem;margin:0">Your order</h2><button id="close" aria-label="Close order">Close</button></div>
+  <div id="items"></div>
+  <div class="tot"><span>Total</span><span id="total">KES 0</span></div>
+  <button class="go" id="go" disabled>Send order</button>
+</aside>
+
+<script src="app.js"></script>
+</body>
+</html>
